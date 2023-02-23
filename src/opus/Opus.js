@@ -17,7 +17,6 @@ function loadOpus(refresh = false) {
   Opus = loader.require([
     ['@discordjs/opus', opus => ({ Encoder: opus.OpusEncoder })],
     ['node-opus', opus => ({ Encoder: opus.OpusEncoder })],
-    ['opusscript', opus => ({ Encoder: opus })],
   ]);
   return Opus;
 }
@@ -44,12 +43,9 @@ class OpusStream extends Transform {
    */
   constructor(options = {}) {
     if (!loadOpus().Encoder) {
-      throw Error('Could not find an Opus module! Please install @discordjs/opus, node-opus, or opusscript.');
+      throw Error('Could not find an Opus module! Please install @discordjs/opus or node-opus.');
     }
     super(Object.assign({ readableObjectMode: true }, options));
-    if (Opus.name === 'opusscript') {
-      options.application = Opus.Encoder.Application[options.application];
-    }
     this.encoder = new Opus.Encoder(options.rate, options.channels, options.application);
 
     this._options = options;
@@ -61,11 +57,11 @@ class OpusStream extends Transform {
   }
 
   _decode(buffer) {
-    return this.encoder.decode(buffer, Opus.name === 'opusscript' ? null : this._options.frameSize);
+    return this.encoder.decode(buffer, this._options.frameSize);
   }
 
   /**
-   * Returns the Opus module being used - `opusscript`, `node-opus`, or `@discordjs/opus`.
+   * Returns the Opus module being used - `node-opus`, or `@discordjs/opus`.
    * @type {string}
    * @readonly
    * @example
@@ -119,7 +115,6 @@ class OpusStream extends Transform {
    * @private
    */
   _cleanup() {
-    if (Opus.name === 'opusscript' && this.encoder) this.encoder.delete();
     this.encoder = null;
   }
 }

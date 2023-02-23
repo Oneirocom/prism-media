@@ -41,7 +41,6 @@ each category is preferred)
 - Opus
   - [`@discordjs/opus`](https://github.com/discordjs/opus)
   - [`node-opus`](https://github.com/Rantanen/node-opus)
-  - [`opusscript`](https://github.com/abalabahaha/opusscript)
 - FFmpeg
   - [`ffmpeg-static`](http://npmjs.com/ffmpeg-static)
   - `ffmpeg` from a [normal installation](https://www.ffmpeg.org/download.html)

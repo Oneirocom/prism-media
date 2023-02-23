@@ -7,10 +7,10 @@ interface OpusOptions {
 }
 
 export class OpusStream extends Transform {
-  public encoder: any; // TODO: type opusscript/node-opus
+  public encoder: any;
 
   constructor(options?: OpusOptions);
-  public static readonly type: 'opusscript' | 'node-opus' | '@discordjs/opus';
+  public static readonly type: 'node-opus' | '@discordjs/opus';
   public setBitrate(bitrate: number): void;
   public setFEC(enabled: boolean): void;
   public setPLP(percentage: number): void;

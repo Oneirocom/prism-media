@@ -31,7 +31,7 @@
   "devDependencies": {
     "eslint": "^8.19.0",
     "jest": "^28.1.2",
-    "jsdoc": "^3.6.10"
+    "jsdoc": "^4.0.2"
   },
   "jest": {
     "testEnvironmentOptions": {
@@ -39,19 +39,15 @@
     }
   },
   "peerDependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "ffmpeg-static": "^5.0.2 || ^4.2.7 || ^3.0.0 || ^2.4.0",
-    "node-opus": "^0.3.3",
-    "opusscript": "^0.0.8"
+    "@discordjs/opus": "^0.9.0",
+    "ffmpeg-static": "^5.1.0",
+    "node-opus": "^0.9.0"
   },
   "peerDependenciesMeta": {
     "@discordjs/opus": {
       "optional": true
     },
     "node-opus": {
-      "optional": true
-    },
-    "opusscript": {
       "optional": true
     },
     "ffmpeg-static": {
